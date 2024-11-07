@@ -1,6 +1,9 @@
 import Header from "../components/header/Header";
+import Project from "../components/project/Project"
 
-export default function Home() {
+import {projectList} from "../helpers/ProjectLists";
+
+export default function Projects() {
     return (
         <>
             <Header/>
@@ -9,37 +12,19 @@ export default function Home() {
                 <div className="container">
                     <h2 className="title-1">Projects</h2>
                     <ul className="projects">
-                        <li className="project">
-                            <a href="./project-page.html">
-                                <img src="./img/projects/01.jpg" alt="Project img" className="project__img"/>
-                                <h3 className="project__title">Gaming streaming portal</h3>
-                            </a>
-                        </li>
-                        <li className="project">
-                            <a href="./project-page.html">
-                                <img src="./img/projects/02.jpg" alt="Project img" className="project__img"/>
-                                <h3 className="project__title">Video service</h3>
-                            </a>
-                        </li>
-                        <li className="project">
-                            <a href="./project-page.html">
-                                <img src="./img/projects/03.jpg" alt="Project img" className="project__img"/>
-                                <h3 className="project__title">Video portal</h3>
-                            </a>
-                        </li>
 
-                        <li className="project">
-                            <img src="./img/projects/04.jpg" alt="Project img" className="project__img"/>
-                            <h3 className="project__title">Dating app</h3>
-                        </li>
-                        <li className="project">
-                            <img src="./img/projects/05.jpg" alt="Project img" className="project__img"/>
-                            <h3 className="project__title">Landing</h3>
-                        </li>
-                        <li className="project">
-                            <img src="./img/projects/06.jpg" alt="Project img" className="project__img"/>
-                            <h3 className="project__title">Gaming community</h3>
-                        </li>
+                        {projectList.map((project,index)=>{
+                            // Указывать ключ через индекс массива хуйня идея, в идеале нужен ункикальный ключ в массиве проектов. Но тут похуй в этом проекте
+                            return(
+                                <Project
+                                    key={index}
+                                    title={project.title}
+                                    img={project.img}
+                                    index={index}
+
+                                />
+                            )
+                        })}
 
                     </ul>
                 </div>
